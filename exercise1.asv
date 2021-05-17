@@ -33,9 +33,9 @@ title('Analogue signal 2')
 
 %number of samples
 
-n=0:1:1024
+n=0:1024
 
-%sampling frequency
+%sampling frequence
 
 fs=8000
 %sampling time
