@@ -11,4 +11,3 @@ function [Q,q]=quantBits(input,N,A)
 
 q=(A-(-A))/(2^N);
 Q=round(input/q)*q;
-end

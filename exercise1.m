@@ -50,27 +50,15 @@ title('Digital signal ')
 % exercise2 --->
 Amax=0.7
 
-%8bit Quantization
-
-
-
+%8bit quantized version of our signal
 quant8bit=quantBits(sampledSignal,8,Amax)
+%err= original sampled signal - quantized version
+quantErr8=sampledSignal-quant8bit
 
-%16bit Quantization
+%16bit quantized version of our signal
 
 quant16bit=quantBits(sampledSignal,16,Amax)
+quantErr16=sampledSignal-quant16bit
 
-figure;
-plot(signal)
-hold on;
-grid on;
-plot(quant8bit)
-legend('analogic original signal','8bit quantized version of signal')
 
-figure;
-plot(signal)
-hold on;
-grid on;
-plot(quant16bit)
-legend('analogic original signal','16bit quantized version of signal')
 
