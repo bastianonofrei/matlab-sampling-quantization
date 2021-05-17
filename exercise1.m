@@ -17,19 +17,17 @@ freq1=50
 freq2=230
 %Analogous signals
 
-signal1=Amp1*sin(2*pi*freq1*t+theta1)
-signal2=Amp2*sin(2*pi*freq2*t+theta2)
+signal=Amp1*sin(2*pi*freq1*t+theta1)+Amp2*sin(2*pi*freq2*t+theta2)
 
 
-%plotting continuous time signals
+
+%plotting continuous time signal
 
 figure
-subplot(2,1,1)
-plot(t,signal1,'LineWidth',3)
-title('Analogue signal 1')
-subplot(2,1,2)
-plot(t,signal2,'LineWidth',0.2)
-title('Analogue signal 2')
+
+plot(t,signal,'LineWidth',1)
+title('Analogue signal ')
+
 
 %number of samples
 
@@ -44,14 +42,35 @@ ts=1/fs
 
 %sampled signals
 
-sampledSignal1=Amp1*sin(2*pi*freq1*n/fs)
-sampledSignal2=Amp2*sin(2*pi*freq2*n/fs)
-
-
+sampledSignal=Amp1*sin(2*pi*freq1*n/fs)+Amp2*sin(2*pi*freq2*n/fs)
 figure
-subplot(2,1,1)
-stem(n,sampledSignal1,'LineWidth',0.1)
-title('Digital signal 1')
-subplot(2,1,2)
-stem(n,sampledSignal2,'LineWidth',0.2)
-title('Digital signal 2')
+stem(n,sampledSignal,'LineWidth',0.1)
+title('Digital signal ')
+
+% exercise2 --->
+Amax=0.7
+
+%8bit Quantization
+
+
+
+quant8bit=quantBits(sampledSignal,8,Amax)
+
+%16bit Quantization
+
+quant16bit=quantBits(sampledSignal,16,Amax)
+
+figure;
+plot(signal)
+hold on;
+grid on;
+plot(quant8bit)
+legend('analogic original signal','8bit quantized version of signal')
+
+figure;
+plot(signal)
+hold on;
+grid on;
+plot(quant16bit)
+legend('analogic original signal','16bit quantized version of signal')
+
